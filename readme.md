@@ -1,8 +1,8 @@
-smallftpd is forked from http://smallftpd.sourceforge.net (https://sourceforge.net/projects/smallftpd)
+smallftpd is forked from [http://smallftpd.sourceforge.net] ([https://sourceforge.net/projects/smallftpd])
 
 All credits to the original author, see below.
 
-This gitgub fork was created as the original smallftpd did not work with a Windows 10 FTP command line client due to changes introduced by Microsoft (it sends an OPTS command, which crashes the smallftpd server). As smallftpd no longer seems to be supported, I thought I'd share the fix on github.
+This gitgub fork was created because the original smallftpd did not work with a Windows 10 FTP command line client due to changes introduced by Microsoft (it sends an OPTS command, which crashes the smallftpd server). As smallftpd no longer seems to be supported, I thought I'd share the fix on github.
 
 Compilation
 
@@ -14,11 +14,11 @@ Change the dropdown on the toolbar from 64bit to 32bit release compilation (I ha
 
 There will be a lot of compilation warnings, and with the original version a few errors (now fixed).
 
-Depending on your Dev-C++ install location, you may need to change the path to find libwsock32.a (open Project/ProjectOptions/Parameters/Linker and browse to MinGW64/x86_64-w64-mingw32/lib32/libwsock32.a)
+Depending on your Dev-C++ install location, the linker may fail to find libwsock32.a - fix this by opening Project/ProjectOptions/Parameters/Linker and browsing to MinGW64/x86_64-w64-mingw32/lib32/libwsock32.a
 
-Note that the current code produces debug output (debug.txt, transfer.txt) by default. This can be disabled by modifying the log() function in main.cpp (uncomment "return false" at the top).
+Note that the current code produces debug output (debug.log, transfer.log) by default. This can be disabled by modifying the log() function in main.cpp (uncomment "return false" near the top of the function).
 
-For testing it is useful to start the FTP client with -d -n options, and if not using a Windows 10 FTP client the "literal opts" command can be used to emulate the problematic behaviour.
+For testing it is useful to start the FTP client with -d -n options, and if NOT using a Windows 10 FTP client the "literal opts" command can be used to emulate the problematic behaviour.
 
 ORIGINAL README.TXT FOLLOWS ...
 
