@@ -347,7 +347,8 @@ bool CSession::parse() {
 	updateListMsg(a);
 
 	if (loggedUser<0) {
-		rez = 2;
+		// rez = 2;
+		rez = 0;		// Needed to safely hanlde OPTS command sent from Windows 10 client
 		if (strcmp(first, "USER")==0) rez = user();
 		else if (strcmp(first, "PASS")==0) rez = pass();
 	}
