@@ -1,0 +1,170 @@
+#define APSTUDIO_READONLY_SYMBOLS
+
+#include <windows.h>
+#include "resource.h"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Boxes
+//
+/////////////////////////////////////////////////////////////////////////////
+
+IDD_MAINDIALOG DIALOG 100, 100, 380, 85
+// STYLE WS_MINIMIZEBOX | WS_THICKFRAME | WS_CAPTION | WS_SYSMENU 
+STYLE  DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+MENU IDR_MENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Start",IDSTART,6,62,21,18,BS_ICON
+    PUSHBUTTON      "Stop",IDSTOP,31,62,21,18,BS_ICON
+    LISTBOX         IDC_CONNECTIONS,5,1,367,62, WS_VSCROLL | WS_HSCROLL | WS_TABSTOP, WS_EX_CLIENTEDGE
+//    LTEXT           "For more information, please visit : ",IDC_URL2,70,82,110,8
+    LTEXT           "http://smallftpd.free.fr",IDC_URL,305,70,100,8
+    LTEXT           "",IDC_INFO,60,70,150,10, SS_SUNKEN
+    
+END
+
+
+IDD_USERDIALOG DIALOG DISCARDABLE 50, 50, 215, 242
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "User Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,57,223,50,12
+    PUSHBUTTON      "Cancel",IDCANCEL,113,223,50,12
+    PUSHBUTTON      "Add",IDC_ADDDIR,175,96,28,12
+    PUSHBUTTON      "Delete",IDC_DELDIR,175,112,28,12
+    PUSHBUTTON      "Add",IDC_ADDPERM,175,160,28,12
+    PUSHBUTTON      "Delete",IDC_DELPERM,175,176,28,12
+    EDITTEXT        IDC_USER,47,19,47,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASSWD,150,19,47,12,ES_AUTOHSCROLL | ES_PASSWORD
+    EDITTEXT        IDC_SIMCONN,150,35,27,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TIMEOUT,150,51,27,12,ES_AUTOHSCROLL
+    LTEXT           "Login:",IDC_LBL1,15,23,25,8
+    LTEXT           "Max. simultaneous connections:",IDC_LBL2,15,39,105,8
+    LTEXT           "Inactivity timeout (s):",IDC_LBL3,15,55,92,8
+    LTEXT           "L=Listing, R=Reading, W=Writing",IDC_LBL4,15,196,153,8
+    LTEXT           "Password:",IDC_LBL5,108,23,37,8
+    GROUPBOX        "Permissions",IDC_GRP1,7,142,201,65
+    GROUPBOX        "Connection",IDC_GRP2,7,7,201,65
+    GROUPBOX        "Directories",IDC_GRP3,7,78,201,58
+    LISTBOX         IDC_LISTDIRS,15,92,156,36,LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL,WS_EX_CLIENTEDGE
+    LISTBOX         IDC_LISTPERMS,15,156,155,36,LBS_USETABSTOPS | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL,WS_EX_CLIENTEDGE
+END
+
+IDD_SETTINGS DIALOG DISCARDABLE  0, 0, 159, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "General settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,22,66,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,83,66,50,14
+    LTEXT           "FTP port",IDC_LBL6,19,14,35,12
+    LTEXT           "Max. connections",IDC_LBL7,19,31,60,12
+    LTEXT           "Auto start",IDC_LBL8,19,47,60,12
+    EDITTEXT        IDC_MAXCONN,106,31,24,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_PORT,106,14,24,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "",IDC_AUTORUN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,106,47,16,8
+END
+
+IDD_ADVANCED DIALOG DISCARDABLE  0, 0, 183, 103
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Advanced Settings"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,39,66,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,97,66,50,14
+    EDITTEXT        IDC_PASV_URL,65,27,106,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASV_1,91,44,25,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PASV_2,143,44,27,12,ES_AUTOHSCROLL
+    LTEXT           "Passive URL",IDC_LBL9,7,30,41,9
+    LTEXT           "Passive ports",IDC_LBL10,7,47,43,9
+    LTEXT           "to :",IDC_LBL11,125,47,11,9
+    LTEXT           "from :",IDC_LBL12,68,47,19,9
+    LTEXT           "Use local IP",IDC_LBL13,7,13,41,9
+    CONTROL         "Check1",IDC_USEPASVURL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,65,14,8,8
+    
+END
+
+IDD_USERS DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Users"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,35,74,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,91,74,50,14
+    PUSHBUTTON      "Add",IDC_ADDUSER,21,39,38,14
+    PUSHBUTTON      "Edit",IDC_EDITUSER,72,39,38,14
+    PUSHBUTTON      "Delete",IDC_DELETEUSER,123,39,38,14
+    COMBOBOX        IDC_USERS,21,18,141,100,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_GRP4,7,7,172,53
+END
+
+IDD_DIALOGDIR DIALOG DISCARDABLE  0, 0, 237, 74
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Directory Properties"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,64,54,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,134,54,50,14
+    EDITTEXT        IDC_PATH,94,8,102,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DIR,94,25,130,12,ES_AUTOHSCROLL
+    LTEXT           "Virtual path (ex: / ):",IDC_LBL14,10,10,72,10
+    LTEXT           "Physical path (ex: c:\\ ):",IDC_LBL15,10,27,83,10
+END
+
+IDD_DIALOGPERM DIALOG DISCARDABLE  0, 0, 226, 94
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Permissions"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,54,47,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,124,47,50,14
+    EDITTEXT        IDC_PATH,95,11,102,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TYP,95,28,38,12,ES_AUTOHSCROLL
+    LTEXT           "Virtual path (ex: / ):",IDC_LBL16,11,13,72,10
+    LTEXT           "Permissions:",IDC_LBL17,11,30,83,10
+    LTEXT           "For permissions, use L, R and W.\n(L=Listing, R=Reading,  W=Wrting)",IDC_LBL18,7,70,212,17
+END
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icons
+//
+/////////////////////////////////////////////////////////////////////////////
+
+ICO_STOP                ICON    DISCARDABLE     "src/ico_stop.ico"
+ICO_MAIN                ICON    DISCARDABLE     "src/ico_main.ico"
+ICO_RUN                 ICON    DISCARDABLE     "src/ico_run.ico"
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menus
+//
+/////////////////////////////////////////////////////////////////////////////
+IDR_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Server"
+    BEGIN
+        MENUITEM "Start",                       ME_START
+        MENUITEM "Stop",                        ME_STOP
+        MENUITEM SEPARATOR
+        MENUITEM "Save config",                 ME_SAVECONFIG
+        MENUITEM "Reload config",               ME_LOADCONFIG
+        MENUITEM SEPARATOR
+        MENUITEM "Quit",                        ME_QUIT
+    END
+    POPUP "Settings"
+    BEGIN
+        MENUITEM "General",                     ME_SETTINGS
+        MENUITEM "Advanced",                    ME_ADVANCED
+        MENUITEM "Users",                       ME_USERS
+    END
+END
