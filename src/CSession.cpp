@@ -672,7 +672,7 @@ int CSession::rest() {
 	sscanf(lastParam, "%d", &m_Rest);
 	char *a;
 
-	a = (char*)malloc(lstrlen(REST_1)+lstrlen(lastParam)+lstrlen(REST_2));
+	a = (char*)malloc(lstrlen(REST_1)+lstrlen(lastParam)+lstrlen(REST_2)+1);
 	wsprintf(a, "%s%s%s", REST_1, lastParam, REST_2);
 	sendToClient(a);
 
@@ -751,7 +751,7 @@ int CSession::type() {
 	// TODO : change transfer TYPE
 	char *a;
 	
-	a = (char*)malloc(lstrlen(TYPE_SET_1)+lstrlen(lastParam)+lstrlen(TYPE_SET_2));
+	a = (char*)malloc(lstrlen(TYPE_SET_1)+lstrlen(lastParam)+lstrlen(TYPE_SET_2)+1);
 	wsprintf(a, "%s%s%s", TYPE_SET_1, lastParam, TYPE_SET_2);
 	sendToClient(a);
 
@@ -1520,7 +1520,7 @@ int CSession::size() {
 	HANDLE hFile;
 	WIN32_FIND_DATA findData;
 
-	tmp = (char*)malloc(sizeof(m_rCurrentDir)+sizeof(lastParam));
+	tmp = (char*)malloc(sizeof(m_rCurrentDir)+sizeof(lastParam)+1);
 	wsprintf(tmp, "%s%s", m_rCurrentDir, lastParam);
 
 	hFile = FindFirstFile(tmp, &findData);

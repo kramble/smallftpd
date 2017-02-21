@@ -160,7 +160,7 @@ int CUser::getVirtualSubDirs(char* vDir_, char* rSubDirs_, char* buf_) {
         if (lstrlen(m_VDs[i].virt) <= l) {
             continue;
         }
-        cmp = (char*)malloc(lstrlen(m_VDs[i].virt));
+        cmp = (char*)malloc(lstrlen(m_VDs[i].virt)+1);
         lstrcpy(cmp, m_VDs[i].virt);
 
         if (cmp[l] != '/' && lstrcmp("/", vDir_) != 0) {
@@ -366,7 +366,7 @@ bool CUser::hasPermission(char* path_, char* type_) {
     perm[0] = '\0';
 
     char* pathBuf;
-    pathBuf = (char*)malloc(lstrlen(path_));
+    pathBuf = (char*)malloc(lstrlen(path_)+1);
     lstrcpy(pathBuf, path_);
 
     //
